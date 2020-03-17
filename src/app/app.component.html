@@ -1,0 +1,48 @@
+<!-- Modal Starts here -->
+<ng-template #modal let-modal>
+  <div class="d-flex justify-content-end mb-3">
+    <button class="bg-transparent border-0" (click)="modal.dismiss()">&times;</button>
+  </div>
+  <ul class="mx-3">
+    <li><label class="font-weight-bold mr-3">Title:</label>{{title}}</li>
+    <li><label class="font-weight-bold mr-3">URL:</label>{{url}}</li>
+    <li><label class="font-weight-bold mr-3">Created At:</label>{{created_at}}</li>
+    <li><label class="font-weight-bold mr-3">Author:</label>{{author}}</li>
+  </ul>
+</ng-template>
+<!-- Modal Ends here -->
+
+
+<!-- Main HTML Starts here -->
+<div class="container">
+
+  <!-- Search Box -->
+  <div class="d-flex justify-content-end my-4 align-items-center">
+    <label class="font-weight-bold mr-3">Search</label><input type="text" (input)="searchText($event)">
+  </div>
+  <!-- Search Box -->
+
+  <table class="table">
+    <thead>
+        <tr>
+          <th>Title</th>
+          <th>URL</th>
+          <th>Created At</th>
+          <th>Author</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr scope="row" *ngFor="let item of tableData | searchtitle: searchedText" (click)="open(item,modal)">
+          <td>{{item.title}}</td>
+          <td>{{item.url}}</td>
+          <td>{{item.created_at}}</td>
+          <td>{{item.author}}</td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+<!-- Main HTML Ends here -->
+
+
+
+
